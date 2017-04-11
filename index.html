@@ -1,7 +1,12 @@
+<!--Up to setp 7 on here:-->
+<!--https://www.raspberrypi.org/learning/poo-near-you/worksheet2/-->
 <html>
     <head>
         <title>My map</title>
     </head>
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
     <style>
         #map {
             width: 100%;
@@ -22,7 +27,14 @@
             });
 
         var geocoder = new google.maps.Geocoder();
-        var incident_location = "Sneinton Road, Nottingham, UK";
+        var data_file = "http://localhost:8000/penalties.json";
+
+        $.getJSON(data_file, function(data){
+            $.each(data, function(i){
+                var incident_location =  data[i]["Street"] + ", Nottingham, UK";
+            });
+        });
+
         var emoji = 'poop.png';
 
         geocoder.geocode( { 'address': incident_location }, function(results) {

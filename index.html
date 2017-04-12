@@ -35,7 +35,7 @@
                 $.each(data, function(i){
                     var incident_location =  data[i]["Street"] + ", Nottingham, UK";
 
-                    if( i == 10 ){ return false; }
+                    // if( i == 10 ){ return false; }
 
                     geocoder.geocode( { 'address': incident_location }, function(results, status) {
                         var emoji = 'poop.png';

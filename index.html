@@ -29,27 +29,25 @@
         var geocoder = new google.maps.Geocoder();
         var data_file = "http://localhost:8000/penalties.json";
 
-        $.getJSON(data_file, function(data){
-            $.each(data, function(i){
-                var incident_location =  data[i]["Street"] + ", Nottingham, UK";
-            });
-        });
+$.getJSON(data_file, function(data){
+    $.each(data, function(i){
+        var incident_location =  data[i]["Street"] + ", Nottingham, UK";
 
-        var emoji = 'poop.png';
+        if( i == 10 ){ return false; }
 
         geocoder.geocode( { 'address': incident_location }, function(results) {
+            var emoji = 'poop.png';
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location,
+                animation: google.maps.Animation.DROP,
+                icon: emoji
+            });
 
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location,
-            animation: google.maps.Animation.DROP,
-            icon: emoji
         });
-
     });
-
+});
 }
-
         </script>
 
         <script async defer

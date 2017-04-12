@@ -15,7 +15,7 @@
         <div id="map"></div>
 
         <script>
-        alert("Don't forget to add your own API key to this script, or it won't work properly!");
+        // alert("Don't forget to add your own API key to this script, or it won't work properly!");
         // Set up map
         function initMap() {
              // Where the map is centred (look up on google maps)
@@ -35,7 +35,7 @@
                 $.each(data, function(i){
                     var incident_location =  data[i]["Street"] + ", Nottingham, UK";
 
-                    // if( i == 10 ){ return false; }
+                     if( i == 10 ){ return false; }
 
                     geocoder.geocode( { 'address': incident_location }, function(results, status) {
                         var emoji = 'poop.png';
